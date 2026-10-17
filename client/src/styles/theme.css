@@ -1,0 +1,175 @@
+:root,
+[data-bs-theme='light'] {
+    --ma-charcoal: #2b3034;
+    --ma-slate: #627c8c;
+    --ma-gray: #989398;
+    --ma-pale: #b9c7d2;
+    --ma-red: #e93c35;
+    --ma-red-strong: #c9302a;
+    --ma-red-ink: #b42a25;
+
+    --ma-bg: #edf1f4;
+    --ma-surface: #ffffff;
+    --ma-surface-2: #f5f7f9;
+    --ma-line: #d3dce3;
+    --ma-text: #2b3034;
+    --ma-text-2: #4f6573;
+    --ma-muted: #6b666b;
+    --ma-sidebar: #2b3034;
+    --ma-sidebar-2: #343a3f;
+    --ma-shadow: 0 1px 2px rgba(43, 48, 52, 0.06), 0 8px 24px rgba(43, 48, 52, 0.08);
+    --ma-shadow-hover: 0 2px 4px rgba(43, 48, 52, 0.08), 0 16px 32px rgba(43, 48, 52, 0.16);
+
+    --ma-display: 'Playfair Display', 'PT Serif', Georgia, serif;
+    --ma-body: 'PT Sans', 'Segoe UI', system-ui, sans-serif;
+    --ma-mono: 'PT Mono', 'Consolas', monospace;
+
+    --ma-space-1: 4px;
+    --ma-space-2: 8px;
+    --ma-space-3: 12px;
+    --ma-space-4: 16px;
+    --ma-space-5: 24px;
+    --ma-space-6: 32px;
+    --ma-space-7: 48px;
+    --ma-radius: 6px;
+    --ma-radius-sm: 4px;
+    --ma-sidebar-w: 248px;
+    --ma-topbar-h: 64px;
+
+    --bs-body-font-family: var(--ma-body);
+    --bs-body-font-size: 1rem;
+    --bs-body-bg: var(--ma-bg);
+    --bs-body-color: var(--ma-text);
+    --bs-secondary-color: var(--ma-muted);
+    --bs-border-color: var(--ma-line);
+    --bs-border-radius: var(--ma-radius);
+    --bs-border-radius-sm: var(--ma-radius-sm);
+    --bs-border-radius-lg: 8px;
+    --bs-link-color: var(--ma-text);
+    --bs-link-color-rgb: 43, 48, 52;
+    --bs-link-hover-color: var(--ma-red-ink);
+    --bs-link-hover-color-rgb: 180, 42, 37;
+    --bs-danger: var(--ma-red-strong);
+    --bs-danger-rgb: 201, 48, 42;
+    --bs-focus-ring-color: rgba(233, 60, 53, 0.35);
+    --ma-focus: #1f6fd1;
+    color-scheme: light;
+}
+
+[data-bs-theme='dark'] {
+    --ma-bg: #1d2124;
+    --ma-surface: #2b3034;
+    --ma-surface-2: #33393e;
+    --ma-line: #434b52;
+    --ma-text: #e9eef2;
+    --ma-text-2: #b9c7d2;
+    --ma-muted: #aaa5aa;
+    --ma-red-ink: #ff7a73;
+    --ma-sidebar: #16191b;
+    --ma-sidebar-2: #23272a;
+    --ma-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    --ma-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 16px 32px rgba(0, 0, 0, 0.45);
+    --bs-body-bg: var(--ma-bg);
+    --bs-body-color: var(--ma-text);
+    --bs-border-color: var(--ma-line);
+    --bs-link-color: var(--ma-text);
+    --bs-link-color-rgb: 233, 238, 242;
+    --bs-link-hover-color: var(--ma-red-ink);
+    --bs-link-hover-color-rgb: 255, 122, 115;
+    --bs-secondary-bg: var(--ma-surface-2);
+    --bs-tertiary-bg: var(--ma-surface-2);
+    --ma-focus: #8ab8ff;
+    color-scheme: dark;
+}
+
+body {
+    background: var(--ma-bg);
+    color: var(--ma-text);
+    font-family: var(--ma-body);
+    -webkit-font-smoothing: antialiased;
+}
+
+.btn {
+    --bs-btn-font-weight: 700;
+    --bs-btn-padding-x: 1rem;
+    --bs-btn-border-radius: var(--ma-radius);
+    letter-spacing: 0.01em;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.1s;
+}
+.btn:active { transform: translateY(1px); }
+.btn-danger {
+    --bs-btn-bg: var(--ma-red-strong);
+    --bs-btn-border-color: var(--ma-red-strong);
+    --bs-btn-hover-bg: #b02822;
+    --bs-btn-hover-border-color: #b02822;
+    --bs-btn-active-bg: #9c231e;
+    --bs-btn-active-border-color: #9c231e;
+    --bs-btn-disabled-bg: var(--ma-red-strong);
+    --bs-btn-disabled-border-color: var(--ma-red-strong);
+}
+.btn-outline-danger {
+    --bs-btn-color: var(--ma-red-ink);
+    --bs-btn-border-color: var(--ma-red);
+    --bs-btn-hover-bg: var(--ma-red-strong);
+    --bs-btn-hover-border-color: var(--ma-red-strong);
+    --bs-btn-active-bg: var(--ma-red-strong);
+}
+.btn-dark {
+    --bs-btn-bg: var(--ma-charcoal);
+    --bs-btn-border-color: var(--ma-charcoal);
+    --bs-btn-hover-bg: #3a4146;
+    --bs-btn-active-bg: #1f2326;
+}
+[data-bs-theme='dark'] .btn-dark {
+    --bs-btn-bg: var(--ma-pale);
+    --bs-btn-color: var(--ma-charcoal);
+    --bs-btn-border-color: var(--ma-pale);
+    --bs-btn-hover-bg: #d3dde5;
+    --bs-btn-hover-color: var(--ma-charcoal);
+    --bs-btn-active-bg: #a6b6c3;
+    --bs-btn-active-color: var(--ma-charcoal);
+}
+.btn-outline-dark {
+    --bs-btn-color: var(--ma-text);
+    --bs-btn-border-color: var(--ma-text);
+    --bs-btn-hover-bg: var(--ma-charcoal);
+    --bs-btn-hover-color: #fff;
+}
+[data-bs-theme='dark'] .btn-outline-dark {
+    --bs-btn-hover-bg: var(--ma-pale);
+    --bs-btn-hover-color: var(--ma-charcoal);
+    --bs-btn-hover-border-color: var(--ma-pale);
+}
+.btn-outline-secondary {
+    --bs-btn-color: var(--ma-text-2);
+    --bs-btn-border-color: var(--ma-line);
+    --bs-btn-hover-bg: var(--ma-surface-2);
+    --bs-btn-hover-color: var(--ma-text);
+    --bs-btn-hover-border-color: var(--ma-slate);
+    --bs-btn-active-bg: var(--ma-pale);
+    --bs-btn-active-color: var(--ma-charcoal);
+}
+.btn-link { --bs-btn-color: var(--ma-text-2); --bs-btn-hover-color: var(--ma-red-ink); text-decoration: none; }
+
+.form-control, .form-select {
+    background-color: var(--ma-surface);
+    border-color: var(--ma-line);
+    color: var(--ma-text);
+    min-height: 42px;
+}
+.form-control::placeholder { color: var(--ma-muted); opacity: 1; }
+.form-control:focus, .form-select:focus {
+    border-color: var(--ma-slate);
+    box-shadow: 0 0 0 0.2rem rgba(98, 124, 140, 0.28);
+}
+.form-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ma-muted); margin-bottom: 4px; }
+
+:focus-visible { outline: 3px solid var(--ma-focus); outline-offset: 2px; }
+.btn:focus-visible, .form-control:focus-visible, .form-select:focus-visible { outline: 3px solid var(--ma-focus); outline-offset: 1px; box-shadow: none; }
+
+.tooltip { --bs-tooltip-bg: var(--ma-charcoal); --bs-tooltip-color: #fff; --bs-tooltip-font-size: 0.82rem; --bs-tooltip-opacity: 1; font-family: var(--ma-body); }
+[data-bs-theme='dark'] .tooltip { --bs-tooltip-bg: #0f1112; }
+.modal { --bs-modal-bg: var(--ma-surface); --bs-modal-border-color: var(--ma-line); --bs-modal-border-radius: 8px; }
+.modal-title { font-family: var(--ma-display); font-weight: 700; font-size: 1.4rem; }
+.placeholder { background-color: var(--ma-pale); }
+code { color: var(--ma-red-ink); }

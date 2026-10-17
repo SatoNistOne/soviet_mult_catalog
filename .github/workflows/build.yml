@@ -1,0 +1,70 @@
+name: Build apps
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      api_base:
+        description: 'Адрес API сервера (по умолчанию переменная репозитория API_BASE)'
+        required: false
+
+env:
+  API_BASE: ${{ inputs.api_base || vars.API_BASE }}
+
+jobs:
+  windows:
+    name: Windows (exe)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            client/package-lock.json
+            desktop/package-lock.json
+      - name: Check server address
+        shell: bash
+        run: test -n "$API_BASE" || { echo "Set the repository variable API_BASE"; exit 1; }
+      - run: npm ci
+        working-directory: client
+      - run: npm ci
+        working-directory: desktop
+      - run: npm run dist:win
+        working-directory: desktop
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Multarchive-windows
+          path: desktop/release/*.exe
+          if-no-files-found: error
+
+  android:
+    name: Android (apk)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Check server address
+        run: test -n "$API_BASE" || { echo "Set the repository variable API_BASE"; exit 1; }
+      - run: npm ci
+        working-directory: client
+      - run: npm run android:sync
+        working-directory: client
+      - run: ./gradlew assembleDebug --no-daemon
+        working-directory: client/android
+      - run: mv client/android/app/build/outputs/apk/debug/app-debug.apk Multarchive.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Multarchive-android
+          path: Multarchive.apk
+          if-no-files-found: error
